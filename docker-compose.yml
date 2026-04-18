@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgis/postgis:15-3.4
+    container_name: civicsense-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: civic
+      POSTGRES_PASSWORD: civic
+      POSTGRES_DB: civicsense
+    ports:
+      - '5432:5432'
+    volumes:
+      - civicsense_db:/var/lib/postgresql/data
+
+volumes:
+  civicsense_db:
